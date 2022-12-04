@@ -90,12 +90,19 @@ public class VacantesController {
 		}	
 		
 		if (!multiPart.isEmpty()) {
-			//String ruta = "/empleos/img-vacantes/"; // Linux/MAC
-			//String ruta = "c:/empleos/img-vacantes/"; // Windows
-			String nombreImagen = Utileria.guardarArchivo(multiPart, ruta);
-			if (nombreImagen!=null){ // La imagen si se subio				
-				vacante.setImagen(nombreImagen); // Asignamos el nombre de la imagen
-			}	
+			Path directorioImagenes= Paths.get("src//main//resources//static/images");
+            String rutaAbsoluta=directorioImagenes.toFile().getAbsolutePath();
+			
+			try {
+				byte[] bytesImg= multiPart.getBytes();
+				Path rutaCompleta=Paths.get(rutaAbsoluta + "//" + multiPart.getOriginalFilename());
+				Files.write(rutaCompleta, bytesImg);
+				vacante.setImagen(multiPart.getOriginalFilename());
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 				
 		// Guadamos el objeto vacante en la bd
