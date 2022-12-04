@@ -20,12 +20,12 @@ public class WebConfig implements WebMvcConfigurer {
 		// Configuración de los recursos estáticos (imagenes de las vacantes) 
 		//registry.addResourceHandler("/logos/**").addResourceLocations("file:c:/empleos/img-vacantes/"); // Windows
 		//registry.addResourceHandler("/logos/**").addResourceLocations("file:/empleos/img-vacantes/"); // Linux
-		registry.addResourceHandler("/logos/**").addResourceLocations("src//main//resources//static/images"); 
+		registry.addResourceHandler("/logos/**").addResourceLocations("/images/"); 
 		
 		// Configuración de los recursos estáticos (archivos de los CV)
 		//registry.addResourceHandler("/cv/**").addResourceLocations("file:c:/empleos/files-cv/"); // Windows
 		//registry.addResourceHandler("/cv/**").addResourceLocations("file:/empleos/files-cv/");
-		registry.addResourceHandler("/cv/**").addResourceLocations("src//main//resources//static/images"); // Linux
+		registry.addResourceHandler("/cv/**").addResourceLocations("/images/"); // Linux
 		
 	}
 	
